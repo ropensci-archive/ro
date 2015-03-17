@@ -1,25 +1,20 @@
 ro
 =======
 
-```{r echo=FALSE}
-knitr::opts_chunk$set(
-  comment = "#>",
-  collapse = TRUE,
-  warning = FALSE,
-  message = FALSE
-)
-```
+
 
 `ro` - ropensci package manager
 
 ## Install
 
-```{r eval=FALSE}
+
+```r
 install.packages("devtools")
 devtools::install_github("ropensci/ro")
 ```
 
-```{r}
+
+```r
 library("ro")
 ```
 
@@ -27,7 +22,8 @@ library("ro")
 
 Run this within the root of your package
 
-```{r eval=FALSE}
+
+```r
 propose()
 ```
 
