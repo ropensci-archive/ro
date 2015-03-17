@@ -9,9 +9,9 @@
 #' issue(title = "hello there!", body = "adsfasdfdsf \n asdfadfasdfasdf")
 #' }
 issue <- function(title, body = NULL, ...) {
-  body <- ct(list(title = unbox(title),
-                  body = unbox(body),
-                  labels = "duplicate"))
+  body <- ct(list(title = title,
+                  body = body,
+                  labels = list("duplicate")))
   roPOST(make_url("sckott", "hello"), body, ...)
 }
 
@@ -19,7 +19,7 @@ roPOST <- function(url, body, ...) {
   ghjson <- accept("application/vnd.github.v3+json")
   ua <- user_agent("ropenci_ro")
   ah <- add_headers(Authorization = sprintf("token %s", auth()$token$credentials$access_token))
-  x <- POST(url, body = jsonlite::toJSON(body), config = c(ah, ghjson, ua), encode = "json", ...)
+  x <- POST(url, body = jsonlite::toJSON(body, auto_unbox = TRUE), config = c(ah, ghjson, ua), encode = "json", ...)
   process_result(x)
 }
 
@@ -36,3 +36,12 @@ process_result <- function(x) {
 }
 
 ct <- function(l) Filter(Negate(is.null), l)
+
+browse_issue <- function(x, browse = FALSE) {
+  url <- x$html_url
+  if(browse) {
+    browseURL(url)
+  } else {
+    url
+  }
+}
