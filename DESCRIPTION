@@ -1,0 +1,17 @@
+Package: ro
+Type: Package
+Title: What the Package Does (Title Case)
+Description: More about what it does (maybe more than one line)
+Version: 0.0.1.99
+Date: 2015-03-17
+Authors@R: person("asdf", "asdfa", role = "cre", email = "stuff@gmail.com")
+License: MIT + file LICENSE
+URL: https://github.com/ropensci/ro
+BugReports: http://www.github.com/ropensci/ro/issues
+LazyData: TRUE
+Imports:
+    jsonlite,
+    httr
+Suggests:
+    roxygen2,
+    testthat
